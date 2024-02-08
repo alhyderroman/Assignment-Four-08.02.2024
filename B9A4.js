@@ -1,3 +1,4 @@
+//Assignment 4
 //problem 1
 function calculateMoney(ticketSale){
 const perTicketPrice=120;
@@ -55,5 +56,56 @@ function deleteInvalids(array){
     }
 }
 
-const arr=deleteInvalids(["1",{num:2},NaN,'roman',false,0]);
-console.log(arr);
+// const arr=deleteInvalids(["1",{num:2},NaN,'roman',false,0]);
+// console.log(arr);
+
+//problem-4:
+
+function password(obj){
+    const allKey=Object.keys(obj);
+    const year=String(obj.birthYear);
+    if(!allKey.includes('name','birthYear','siteName')||typeof obj.name!=='string'||typeof obj.birthYear!=='number'||
+     year.length!==4 || typeof obj.siteName!=='string'){
+       return `Invalid`;
+    }
+    else{
+       const str1=obj.name;
+       const str2=obj.birthYear;
+       const str3=obj.siteName.slice(0,1).toUpperCase()+obj.siteName.slice(1);
+       return str3+'#'+str1+'@'+str2;
+    }
+}
+
+
+// console.log(password({name:"Kolimuddin",birthYear:1990,siteName:'Facebook'}));
+
+//Problem-5
+function monthlySavings(arr,livingCost){
+    if(!Array.isArray(arr)||typeof livingCost!=='number'){
+        console.log('Invalid Input')
+
+    }
+    else{
+        let totalPayment=0;
+        let taxDeduction=0;
+        for(const element of arr){
+            totalPayment=totalPayment+element;
+            if(element>=3000){
+                taxDeduction=taxDeduction+element*0.2;
+            }
+        }
+        const savings=totalPayment-taxDeduction-livingCost;
+        if(savings>=0){
+            return savings;
+        }
+        else{
+            return `earn more`
+        }
+        
+        }
+    }
+
+
+
+// const total=monthlySavings(100,[900,2700,3400]);
+// console.log(total);
